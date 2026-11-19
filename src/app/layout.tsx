@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Script from 'next/script';
+import { Analytics } from '@vercel/analytics/next';
 import { Cinzel, Noto_Sans_KR, Noto_Serif_KR } from 'next/font/google';
 import './globals.css';
 
@@ -39,6 +40,7 @@ export default function RootLayout({
     >
       <body className="bg-[#09080c] text-[#ece6da] antialiased selection:bg-[#b91c1c]/40 selection:text-[#f5dfa0]">
         {children}
+        <Analytics />
         {/* Cloudflare Web Analytics */}
         <Script
           type="module"
