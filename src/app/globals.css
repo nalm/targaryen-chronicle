@@ -1,26 +1,69 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bg-obsidian: #09080c;
+  --bg-surface: #121018;
+  --bg-elevated: #1a1622;
+  --gold: #d4af37;
+  --gold-bright: #f3d578;
+  --crimson: #b91c1c;
+  --crimson-bright: #ef4444;
+  --emerald: #15803d;
+  --emerald-bright: #22c55e;
+  --valyrian-border: rgba(212, 175, 55, 0.22);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  body {
+    font-family: var(--font-sans-kr), system-ui, -apple-system, sans-serif;
+    background-color: var(--bg-obsidian);
+    background-image:
+      radial-gradient(ellipse 80% 50% at 50% -10%, rgba(185, 28, 28, 0.14), transparent 65%),
+      radial-gradient(ellipse 60% 40% at 85% 95%, rgba(212, 175, 55, 0.08), transparent 60%);
+    color: #ece6da;
+    overflow-x: hidden;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+.font-display {
+  font-family: var(--font-cinzel), var(--font-serif-kr), serif;
+}
+
+.font-serif-kr {
+  font-family: var(--font-serif-kr), Georgia, serif;
+}
+
+/* Custom Valyrian Scrollbar */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+::-webkit-scrollbar-track {
+  background: #0d0b12;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(212, 175, 55, 0.28);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(212, 175, 55, 0.5);
+}
+
+/* Subtle metallic card border */
+.valyrian-card {
+  background: linear-gradient(180deg, rgba(26, 22, 34, 0.92) 0%, rgba(15, 13, 20, 0.96) 100%);
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.55);
+}
+
+.valyrian-glow-gold {
+  box-shadow: 0 0 24px rgba(212, 175, 55, 0.28), inset 0 0 12px rgba(212, 175, 55, 0.12);
+}
+
+.valyrian-glow-black {
+  box-shadow: 0 0 24px rgba(220, 38, 38, 0.3), inset 0 0 12px rgba(220, 38, 38, 0.12);
+}
+
+.valyrian-glow-green {
+  box-shadow: 0 0 24px rgba(34, 197, 94, 0.25), inset 0 0 12px rgba(34, 197, 94, 0.1);
 }
