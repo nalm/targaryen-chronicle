@@ -5,6 +5,7 @@ import { ArrowRight, ArrowRightLeft, Flame, Heart, Shield, Sparkles, Users } fro
 import { CHARACTERS, CHARACTER_MAP } from '@/data/characters';
 import { analyzeKinship } from '@/lib/kinship';
 import { DragonSilhouette, HouseBadge } from './Sigils';
+import { CharacterAvatar } from './Portraits';
 
 interface RelationshipFinderProps {
   charAId: string;
@@ -136,14 +137,17 @@ export function RelationshipFinder({
               <div className="flex flex-wrap items-center gap-3">
                 <button
                   onClick={() => onJumpToCharacter(analysis.charA.id)}
-                  className="text-left group cursor-pointer"
+                  className="flex items-center gap-3 text-left group cursor-pointer"
                 >
-                  <div className="font-serif-kr text-lg font-bold text-[#f7e7ba] group-hover:underline">
-                    {analysis.charA.nameKo}
-                  </div>
-                  <div className="mt-0.5 flex items-center gap-1.5">
-                    <HouseBadge house={analysis.charA.house} compact />
-                    <span className="text-[11px] text-[#9b8f7a]">{analysis.charA.nameEn}</span>
+                  <CharacterAvatar character={analysis.charA} size="md" />
+                  <div>
+                    <div className="font-serif-kr text-lg font-bold text-[#f7e7ba] group-hover:underline">
+                      {analysis.charA.nameKo}
+                    </div>
+                    <div className="mt-0.5 flex items-center gap-1.5">
+                      <HouseBadge house={analysis.charA.house} compact />
+                      <span className="text-[11px] text-[#9b8f7a]">{analysis.charA.nameEn}</span>
+                    </div>
                   </div>
                 </button>
 
@@ -151,14 +155,17 @@ export function RelationshipFinder({
 
                 <button
                   onClick={() => onJumpToCharacter(analysis.charB.id)}
-                  className="text-left group cursor-pointer"
+                  className="flex items-center gap-3 text-left group cursor-pointer"
                 >
-                  <div className="font-serif-kr text-lg font-bold text-[#f7e7ba] group-hover:underline">
-                    {analysis.charB.nameKo}
-                  </div>
-                  <div className="mt-0.5 flex items-center gap-1.5">
-                    <HouseBadge house={analysis.charB.house} compact />
-                    <span className="text-[11px] text-[#9b8f7a]">{analysis.charB.nameEn}</span>
+                  <CharacterAvatar character={analysis.charB} size="md" />
+                  <div>
+                    <div className="font-serif-kr text-lg font-bold text-[#f7e7ba] group-hover:underline">
+                      {analysis.charB.nameKo}
+                    </div>
+                    <div className="mt-0.5 flex items-center gap-1.5">
+                      <HouseBadge house={analysis.charB.house} compact />
+                      <span className="text-[11px] text-[#9b8f7a]">{analysis.charB.nameEn}</span>
+                    </div>
                   </div>
                 </button>
               </div>

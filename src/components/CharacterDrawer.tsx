@@ -5,7 +5,8 @@ import { Crown, Flame, GitCompare, Heart, Info, Skull, Users, X } from 'lucide-r
 import { CHARACTERS, CHARACTER_MAP } from '@/data/characters';
 import { DRAGON_MAP } from '@/data/dragons';
 import { Character } from '@/data/types';
-import { DragonSilhouette, HouseBadge } from './Sigils';
+import { HouseBadge } from './Sigils';
+import { CharacterAvatar, DragonAvatar } from './Portraits';
 
 interface CharacterDrawerProps {
   character: Character | null;
@@ -53,29 +54,36 @@ export function CharacterDrawer({
           <X className="w-4 h-4" />
         </button>
 
-        <div className="flex flex-wrap items-center gap-1.5 mb-2 pr-8">
-          <HouseBadge house={character.house} />
-          <span className={`inline-flex items-center rounded-full border px-2 py-0.5 text-[11px] font-medium ${factionMeta.cls}`}>
-            {factionMeta.label}
-          </span>
-          {character.monarchOrder && (
-            <span className="inline-flex items-center gap-1 rounded-full border border-[#d4af37]/50 bg-[#d4af37]/20 px-2 py-0.5 text-[11px] font-semibold text-[#fef08a]">
-              <Crown className="w-3 h-3" />
-              제{character.monarchOrder}대 국왕
-            </span>
-          )}
-          {!character.monarchOrder && character.claimant && (
-            <span className="inline-flex items-center gap-1 rounded-full border border-[#ef4444]/40 bg-[#b91c1c]/20 px-2 py-0.5 text-[11px] font-semibold text-[#fca5a5]">
-              <Crown className="w-3 h-3" />
-              왕위 주장자
-            </span>
-          )}
-        </div>
+        <div className="flex items-start gap-3.5 pr-8">
+          <CharacterAvatar character={character} size="lg" />
+          <div className="min-w-0 flex-1">
+            <div className="flex flex-wrap items-center gap-1.5 mb-1.5">
+              <HouseBadge house={character.house} compact />
+              <span className={`inline-flex items-center rounded-full border px-2 py-0.5 text-[10px] font-medium ${factionMeta.cls}`}>
+                {factionMeta.label}
+              </span>
+              {character.monarchOrder && (
+                <span className="inline-flex items-center gap-1 rounded-full border border-[#d4af37]/50 bg-[#d4af37]/20 px-2 py-0.5 text-[10px] font-semibold text-[#fef08a]">
+                  <Crown className="w-3 h-3" />
+                  제{character.monarchOrder}대 국왕
+                </span>
+              )}
+              {!character.monarchOrder && character.claimant && (
+                <span className="inline-flex items-center gap-1 rounded-full border border-[#ef4444]/40 bg-[#b91c1c]/20 px-2 py-0.5 text-[10px] font-semibold text-[#fca5a5]">
+                  <Crown className="w-3 h-3" />
+                  왕위 주장자
+                </span>
+              )}
+            </div>
 
-        <h2 className="font-serif-kr text-xl font-bold text-[#f7e7ba]">{character.nameKo}</h2>
-        <div className="font-display text-xs tracking-wider text-[#a99b84] mt-0.5">
-          {character.nameEn}
-          {character.epithetKo ? ` · ${character.epithetKo}` : ''}
+            <h2 className="font-serif-kr text-lg sm:text-xl font-bold text-[#f7e7ba] leading-tight">
+              {character.nameKo}
+            </h2>
+            <div className="font-display text-[11px] tracking-wider text-[#a99b84] mt-0.5 truncate">
+              {character.nameEn}
+              {character.epithetKo ? ` · ${character.epithetKo}` : ''}
+            </div>
+          </div>
         </div>
 
         <div className="mt-3 flex flex-wrap items-center gap-3 text-xs text-[#b8ae9c]">
@@ -140,12 +148,7 @@ export function CharacterDrawer({
                   className="flex w-full items-center justify-between rounded-xl border border-[#d4af37]/20 bg-[#1a1524] p-2.5 text-left hover:border-[#d4af37]/60 hover:bg-[#221c2e] transition-all cursor-pointer"
                 >
                   <div className="flex items-center gap-2.5">
-                    <div
-                      className="flex h-8 w-8 items-center justify-center rounded-lg border border-white/15"
-                      style={{ backgroundColor: `${d.colorPrimary}55` }}
-                    >
-                      <DragonSilhouette className="w-5 h-5" color={d.colorAccent} />
-                    </div>
+                    <DragonAvatar dragon={d} size="sm" />
                     <div>
                       <div className="font-semibold text-[#f5efe3]">
                         {d.nameKo} <span className="font-display text-[10px] text-[#a99b84]">({d.nameEn})</span>

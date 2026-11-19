@@ -1,9 +1,9 @@
 import { Character, MarriageType } from '@/data/types';
 
-export const NODE_WIDTH = 178;
-export const NODE_HEIGHT = 96;
-export const COL_SPACING = 212;
-export const ROW_SPACING = 176;
+export const NODE_WIDTH = 198;
+export const NODE_HEIGHT = 100;
+export const COL_SPACING = 232;
+export const ROW_SPACING = 180;
 export const CANVAS_PADDING_X = 480;
 export const CANVAS_PADDING_Y = 90;
 

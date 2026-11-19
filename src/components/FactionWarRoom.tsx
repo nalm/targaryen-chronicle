@@ -4,7 +4,7 @@ import React, { useMemo, useState } from 'react';
 import { Crown, Flame, Shield, Sparkles, Swords, Users } from 'lucide-react';
 import { CHARACTERS, CHARACTER_MAP } from '@/data/characters';
 import { DRAGONS } from '@/data/dragons';
-import { DragonSilhouette } from './Sigils';
+import { DragonAvatar } from './Portraits';
 
 interface FactionWarRoomProps {
   onJumpToCharacter: (id: string) => void;
@@ -184,7 +184,7 @@ export function FactionWarRoom({
                       className="flex w-full items-center justify-between rounded-xl border border-white/10 bg-[#17121c] px-3.5 py-2.5 text-left hover:border-[#ef4444]/60 transition-colors cursor-pointer"
                     >
                       <div className="flex items-center gap-3">
-                        <DragonSilhouette className="w-6 h-6 shrink-0" color={d.colorAccent} />
+                        <DragonAvatar dragon={d} size="sm" />
                         <div>
                           <div className="flex items-center gap-1.5">
                             <span className="font-serif-kr text-sm font-bold text-[#f5efe3]">
@@ -287,7 +287,7 @@ export function FactionWarRoom({
                       className="flex w-full items-center justify-between rounded-xl border border-white/10 bg-[#121a16] px-3.5 py-2.5 text-left hover:border-[#22c55e]/60 transition-colors cursor-pointer"
                     >
                       <div className="flex items-center gap-3">
-                        <DragonSilhouette className="w-6 h-6 shrink-0" color={d.colorAccent} />
+                        <DragonAvatar dragon={d} size="sm" />
                         <div>
                           <div className="font-serif-kr text-sm font-bold text-[#f5efe3]">
                             {d.nameKo}

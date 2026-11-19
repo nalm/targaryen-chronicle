@@ -6,7 +6,7 @@ import { CHARACTER_MAP } from '@/data/characters';
 import { DRAGONS } from '@/data/dragons';
 import { Dragon, DragonSizeTier, TimelineSnapshot } from '@/data/types';
 import { getDragonRiderAtYear } from '@/lib/kinship';
-import { DragonSilhouette } from './Sigils';
+import { CharacterAvatar, DragonAvatar } from './Portraits';
 
 interface DragonCodexViewProps {
   selectedDragonId: string | null;
@@ -104,14 +104,7 @@ export function DragonCodexView({
               >
                 <div className="flex items-start justify-between gap-2">
                   <div className="flex items-center gap-3">
-                    <div
-                      className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-white/15"
-                      style={{
-                        background: `linear-gradient(135deg, ${d.colorPrimary}aa, ${d.colorAccent}44)`,
-                      }}
-                    >
-                      <DragonSilhouette className="w-7 h-7" color={d.colorAccent} />
-                    </div>
+                    <DragonAvatar dragon={d} size="md" />
                     <div>
                       <div className="flex items-center gap-1.5">
                         <h3 className="font-serif-kr text-base font-bold text-[#f5efe3]">
@@ -203,12 +196,7 @@ export function DragonCodexView({
               }}
             >
               <div className="flex items-center gap-4">
-                <div
-                  className="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl border border-white/20 shadow-lg"
-                  style={{ backgroundColor: `${activeDragon.colorPrimary}99` }}
-                >
-                  <DragonSilhouette className="w-10 h-10" color={activeDragon.colorAccent} />
-                </div>
+                <DragonAvatar dragon={activeDragon} size="hero" />
                 <div>
                   <div className="flex items-center gap-2">
                     <h3 className="font-serif-kr text-2xl font-bold text-[#f7e7ba]">
@@ -296,19 +284,22 @@ export function DragonCodexView({
                           onClick={() => onJumpToCharacter(rider.id)}
                           className="group flex w-full items-center justify-between rounded-xl border border-white/10 bg-[#171321] p-3 text-left hover:border-[#d4af37]/60 hover:bg-[#1f1a2c] transition-all cursor-pointer"
                         >
-                          <div>
-                            <div className="flex items-center gap-2">
-                              <span className="rounded bg-[#d4af37]/20 px-1.5 py-0.5 text-[10px] font-bold text-[#fde68a]">
-                                {idx + 1}대 기수
-                              </span>
-                              <span className="font-serif-kr text-sm font-bold text-[#f5efe3]">
-                                {rider.nameKo}
-                              </span>
-                            </div>
-                            <div className="text-[11px] text-[#a99b84] mt-1">
-                              {entry.fromAC !== undefined ? `${entry.fromAC} AC` : '?'} ~{' '}
-                              {entry.toAC !== undefined ? `${entry.toAC} AC` : '계속'}
-                              {entry.noteKo ? ` · ${entry.noteKo}` : ''}
+                          <div className="flex items-center gap-3 min-w-0">
+                            <CharacterAvatar character={rider} size="sm" />
+                            <div className="min-w-0">
+                              <div className="flex items-center gap-2">
+                                <span className="rounded bg-[#d4af37]/20 px-1.5 py-0.5 text-[10px] font-bold text-[#fde68a]">
+                                  {idx + 1}대 기수
+                                </span>
+                                <span className="font-serif-kr text-sm font-bold text-[#f5efe3] truncate">
+                                  {rider.nameKo}
+                                </span>
+                              </div>
+                              <div className="text-[11px] text-[#a99b84] mt-1">
+                                {entry.fromAC !== undefined ? `${entry.fromAC} AC` : '?'} ~{' '}
+                                {entry.toAC !== undefined ? `${entry.toAC} AC` : '계속'}
+                                {entry.noteKo ? ` · ${entry.noteKo}` : ''}
+                              </div>
                             </div>
                           </div>
                           <ArrowRight className="w-4 h-4 text-[#d4af37] opacity-60 group-hover:opacity-100 group-hover:translate-x-0.5 transition-all shrink-0" />

@@ -21,6 +21,7 @@ import {
   NODE_WIDTH,
 } from '@/lib/layout';
 import { DragonSilhouette } from './Sigils';
+import { CharacterAvatar } from './Portraits';
 
 interface FamilyTreeViewProps {
   selectedCharacterId: string | null;
@@ -452,13 +453,16 @@ export function FamilyTreeView({
                   </div>
                 </div>
 
-                {/* Middle: Name Ko + En */}
-                <div className="my-0.5">
-                  <div className="truncate font-serif-kr text-[13px] font-bold text-[#f5efe3] leading-tight">
-                    {c.nameKo}
-                  </div>
-                  <div className="truncate font-display text-[9px] tracking-wide text-[#9b8f7a]">
-                    {c.nameEn}
+                {/* Middle: Avatar + Name Ko + En */}
+                <div className="my-0.5 flex items-center gap-2 min-w-0">
+                  <CharacterAvatar character={c} size="sm" className="!h-9 !w-9 !rounded-lg" />
+                  <div className="min-w-0 flex-1">
+                    <div className="truncate font-serif-kr text-[13px] font-bold text-[#f5efe3] leading-tight">
+                      {c.nameKo}
+                    </div>
+                    <div className="truncate font-display text-[9px] tracking-wide text-[#9b8f7a]">
+                      {c.nameEn}
+                    </div>
                   </div>
                 </div>
 
